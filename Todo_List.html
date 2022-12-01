@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .remove{
+            margin-left: 40px;
+            background-color: rgb(159, 167, 167);
+            border-radius: 4px;
+            text-decoration: none;
+            border: 1px solid black;
+            position: relative;  
+        }
+        .list_style{
+            margin-top: 10px;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            padding: 10px;
+            border: 1px solid black ;
+        }
+        label{
+             font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form>
+            <label>Add Your To Do List here</label><br><br>
+            <input type="text" id='name'>
+            <input type="button" value="Add" onclick="Add()">    
+        </form>
+        <h3>To Do List</h3>
+        <ul id="list"></ul>
+    </div>
+`    <script>
+     function Add(){
+         let name=document.getElementById('name').value;
+        
+             let box=document.getElementById('list');
+             let li=document.createElement('li');
+             li.className="list_style";
+             li.textContent=name;
+
+             let button=document.createElement('button');
+             button.textContent="Delete";
+             button.href="javascript:void(0)";
+             button.className="remove"
+             li.appendChild(button);
+             box.appendChild(li);
+
+             document.getElementById('name').value="";
+
+         let btn=document.querySelector('ul');
+         btn.addEventListener('click',function(e){
+             let box =document.getElementById('list');
+             let li=e.target.parentNode;
+             box.removeChild(li);
+         })
+     }
+    </script>
+</body>
+</html>
